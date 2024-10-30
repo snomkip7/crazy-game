@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7o27xe5yi73c"]
+
+[ext_resource type="Script" path="res://ShadowShot.cs" id="1_82xvy"]
+[ext_resource type="Texture2D" uid="uid://c1s8mxtrj8vah" path="res://shadowBlast.png" id="2_4hi4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkc3p"]
+size = Vector2(68, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdasc"]
+size = Vector2(68, 46)
+
+[node name="ShadowShot" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_82xvy")
+
+[node name="ShotSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.578125, 0.578125)
+texture = ExtResource("2_4hi4k")
+
+[node name="ShotCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3)
+shape = SubResource("RectangleShape2D_tkc3p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-4, 3)
+shape = SubResource("RectangleShape2D_qdasc")
+
+[connection signal="timeout" from="Timer" to="." method="timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="HitPlayer"]

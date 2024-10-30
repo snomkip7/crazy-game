@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1j3n18qf23pb"]
+
+[ext_resource type="Script" path="res://Ghost.cs" id="1_y6ufc"]
+[ext_resource type="Texture2D" uid="uid://bct3bkrtc8o0t" path="res://ghost.png" id="2_qc22c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo03j"]
+size = Vector2(56, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddmlf"]
+size = Vector2(62, 78)
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_y6ufc")
+
+[node name="GhostCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bo03j")
+
+[node name="GhostSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.578125, 0.722656)
+texture = ExtResource("2_qc22c")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_ddmlf")
+
+[connection signal="body_entered" from="Hitbox" to="." method="HitPlayer"]

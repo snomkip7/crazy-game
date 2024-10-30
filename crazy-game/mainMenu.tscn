@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://x6c4nal400c6"]
+
+[ext_resource type="Script" path="res://mainMenu.cs" id="1_83c17"]
+[ext_resource type="Texture2D" uid="uid://d1tjbxlpj1nyl" path="res://crazyMan.png" id="2_0pesx"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_83c17")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 414.0
+offset_top = 211.0
+offset_right = 601.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 41
+text = "the game"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 443.0
+offset_top = 272.0
+offset_right = 689.0
+offset_bottom = 479.0
+text = "start da game"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 663.0
+offset_top = 27.0
+offset_right = 1142.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 36
+text = "Controls:
+wasd for movement
+left click/space for shooting
+mouse to aim"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 230.0
+offset_right = 514.0
+offset_bottom = 386.0
+theme_override_font_sizes/font_size = 25
+text = "Objective:
+Create a Golden Candy Corn
+"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 391.0
+offset_right = 394.0
+offset_bottom = 547.0
+theme_override_font_sizes/font_size = 25
+text = "Survive:
+Avoid shadow creature shots
+Shoo away ghosts by shooting them with candy corn
+"
+autowrap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(1.75, 1.75)
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(974, 452)
+scale = Vector2(2.10938, 2.10938)
+texture = ExtResource("2_0pesx")
+
+[connection signal="pressed" from="StartButton" to="." method="startGame"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu3yg54rewerx"]
+
+[ext_resource type="Texture2D" uid="uid://ccexk6j3io57l" path="res://forest.png" id="1_x3xxy"]
+[ext_resource type="PackedScene" uid="uid://bgyxyfr5am3vs" path="res://Player.tscn" id="2_uyyth"]
+[ext_resource type="PackedScene" uid="uid://c1j3n18qf23pb" path="res://Ghost.tscn" id="3_lxi11"]
+[ext_resource type="PackedScene" uid="uid://u2pukom6xxvh" path="res://Shadow.tscn" id="4_fpxkm"]
+[ext_resource type="Texture2D" uid="uid://g0r6ffgspu2p" path="res://piece3.png" id="5_pami0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g7r1"]
+size = Vector2(8948, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hdu6"]
+size = Vector2(128, 124)
+
+[node name="Level3" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(563, 461)
+scale = Vector2(7.51, 7.51)
+texture = ExtResource("1_x3xxy")
+
+[node name="Player" parent="." instance=ExtResource("2_uyyth")]
+
+[node name="Ghost" parent="." instance=ExtResource("3_lxi11")]
+position = Vector2(1967, -335)
+
+[node name="Ghost2" parent="." instance=ExtResource("3_lxi11")]
+position = Vector2(1967, -335)
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(-51, -1048)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+shape = SubResource("RectangleShape2D_0g7r1")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 1944)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+shape = SubResource("RectangleShape2D_0g7r1")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(-1984, 418)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("RectangleShape2D_0g7r1")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(3110, 460)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("RectangleShape2D_0g7r1")
+
+[node name="Shadow" parent="." instance=ExtResource("4_fpxkm")]
+position = Vector2(2972, 1826)
+
+[node name="Shadow2" parent="." instance=ExtResource("4_fpxkm")]
+position = Vector2(2972, 1826)
+
+[node name="Shadow3" parent="." instance=ExtResource("4_fpxkm")]
+position = Vector2(2972, 1826)
+
+[node name="Goal" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="GoalSprite" type="Sprite2D" parent="Goal"]
+texture = ExtResource("5_pami0")
+
+[node name="GoalCollision" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_3hdu6")
